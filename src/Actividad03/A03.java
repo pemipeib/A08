@@ -1,4 +1,4 @@
-package Actividad3;
+package Actividad03;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,21 +7,27 @@ public class A03 {
 
 //    variables de clase
     static Taller taller;
+    static Coche coche;
+    static Camion camion;
+    static Motocicleta moto;
+    static Bicicleta bici;
     static ArrayList<Taller> vehiculo = new ArrayList<Taller>();
+
+    static int numeroVehiculo= 10;
 
     public static void main(String[] args) {
 
 //        creación de objetos para probar
-        Taller taller1 = new Taller("1234-ABC", "Rojo", "Polo", "Volkswagen", "1.6", "5", "2023");
-        Taller taller2 = new Taller("4567-DEF", "Azul", "Golf", "Volkswagen", "2.0", "4", "2022");
-        Taller taller3 = new Taller("7890-GHI", "Blanco", "Ibiza", "Seat", "1.2", "3", "2021");
-        Taller taller4 = new Taller("9012-JKL", "Negro", "Ateca", "Seat", "2.0", "5", "2020");
-        Taller taller5 = new Taller("1235-ABC", "Plata", "Focus", "Ford", "1.5", "5", "2019");
-        Taller taller6 = new Taller("4567-DEF", "Verde", "Fiesta", "Ford", "1.0", "3", "2018");
-        Taller taller7 = new Taller("7891-GHI", "Amarillo", "Corolla", "Toyota", "1.8", "5", "2017");
-        Taller taller8 = new Taller("9013-JKL", "Naranja", "Auris", "Toyota", "2.0", "4", "2016");
-        Taller taller9 = new Taller("1236-ABC", "Rosa", "308", "Peugeot", "1.6", "5", "2015");
-        Taller taller10 = new Taller("4568-DEF", "Morado", "208", "Peugeot", "1.2", "3", "2014");
+        Taller taller1 = new Taller(1, "1234-ABC", "Rojo", "Polo", "Volkswagen", "1.6", "5", "2023", Vehiculo.COCHE);
+        Taller taller2 = new Taller(2, "4567-DEF", "Azul", "Golf", "Volkswagen", "2.0", "4", "2022", Vehiculo.COCHE);
+        Taller taller3 = new Taller(3, "7890-GHI", "Blanco", "Ibiza", "Seat", "1.2", "3", "2021", Vehiculo.COCHE);
+        Taller taller4 = new Taller(4, "9012-JKL", "Negro", "Ateca", "Seat", "2.0", "5", "2020", Vehiculo.COCHE);
+        Taller taller5 = new Taller(5, "1235-ABC", "Plata", "Focus", "Ford", "1.5", "5", "2019", Vehiculo.COCHE);
+        Taller taller6 = new Taller(6, "4567-DEF", "Verde", "Fiesta", "Ford", "1.0", "3", "2018", Vehiculo.COCHE);
+        Taller taller7 = new Taller(7, "7891-GHI", "Amarillo", "Corolla", "Toyota", "1.8", "5", "2017", Vehiculo.COCHE);
+        Taller taller8 = new Taller(8, "9013-JKL", "Naranja", "Auris", "Toyota", "2.0", "4", "2016", Vehiculo.COCHE);
+        Taller taller9 = new Taller(9, "1236-ABC", "Rosa", "308", "Peugeot", "1.6", "5", "2015", Vehiculo.COCHE);
+        Taller taller10 = new Taller(10, "4568-DEF", "Morado", "208", "Peugeot", "1.2", "3", "2014", Vehiculo.COCHE);
 
         vehiculo.add(taller1);
         vehiculo.add(taller2);
@@ -49,12 +55,12 @@ public class A03 {
         Scanner pedirDatos= new Scanner(System.in);
 
         String menu= "Elige una opción\n" +
-                "1.- Entrada de un coche al taller\n" +
-                "2.- Coche pendientes de reparar\n" +
-                "3.- Coche reparados\n" +
-                "4.- Marcar taller como reparado\n" +
-                "5.- Coche en el taller\n" +
-                "6.- Salida del coche del taller\n" +
+                "1.- Entrada de un vehiculo al taller\n" +
+                "2.- Vehiculo pendientes de reparar\n" +
+                "3.- Vehiculo reparados\n" +
+                "4.- Marcar Vehiculo como reparado\n" +
+                "5.- Coche en el Vehiculo\n" +
+                "6.- Salida del Vehiculo del taller\n" +
                 "7.- Salir";
 
         do {
@@ -66,11 +72,14 @@ public class A03 {
         return opt;
     }
 
+//
+
     public static void eleccion( int opt){
 
         switch (opt){
             case 1:
                 cocheNuevo();
+                numeroVehiculo++;
                 break;
 
             case 2:
@@ -145,10 +154,10 @@ public class A03 {
         matriculación= pedirDatos.nextLine();
 
 //        Crear el objeto
-        Taller taller = new Taller(matricula, color, modelo, marca, cilindrada, puertas, matriculación);
+        Taller taller = new Taller(numeroVehiculo, matricula, color, modelo, marca, cilindrada, puertas, matriculación, Vehiculo.COCHE);
 
 //        Añadir al arrayList
-        A03.vehiculo.add(taller);
+        vehiculo.add(taller);
     }
 
     public static void pendienteReparar(){
@@ -158,7 +167,7 @@ public class A03 {
 //        Recorrer los Coche con reparado en false
         for (Taller taller1 : vehiculo){
             if (taller1.reparado == false){
-                imprimir("El coche modelo " + taller1.modelo + " y con matrícula " + taller1.matricula);
+                imprimir("El vehiculo modelo " + taller1.modelo + " y con matrícula " + taller1.matricula);
             }
         }
     }
@@ -170,7 +179,7 @@ public class A03 {
 //        Recorrer los Coche con reparado en true
         for (Taller taller1 : vehiculo){
             if (taller1.reparado == true){
-                imprimir("El coche modelo " + taller1.modelo + " y con matrícula " + taller1.matricula);
+                imprimir("El vehiculo modelo " + taller1.modelo + " y con matrícula " + taller1.matricula);
             }
         }
     }

@@ -1,20 +1,28 @@
-package Actividad3;
+package Actividad03;
 
 public class Taller {
 
 //    Variables de clase
-    String matricula, color, modelo, marca, cilindrada, puertas, matriculacion;
+
+    protected int numeroVehiculo;
+    protected String matricula, color, modelo, marca, cilindrada, puertas, matriculacion;
+
+    Vehiculo vehiculo;
     boolean reparado;
 
+    //    Para coche y camion
     public Taller(
+            int numeroVehiculo,
             String matricula,
             String color,
             String modelo,
             String marca,
             String cilindrada,
             String puertas,
-            String matriculacion
+            String matriculacion,
+            Vehiculo vehiculo
     ) {
+        this.numeroVehiculo = numeroVehiculo;
         this.matricula = matricula;
         this.color = color;
         this.modelo = modelo;
@@ -23,16 +31,22 @@ public class Taller {
         this.puertas = puertas;
         this.matriculacion = matriculacion;
         this.reparado = false;
+        this.vehiculo = vehiculo;
     }
 
-    public Taller(String color, String modelo, String marca) {
+    //    para bicicleta
+    public Taller(int numeroVehiculo, String color, String modelo, String marca, Vehiculo vehiculo) {
+        this.numeroVehiculo = numeroVehiculo;
         this.color = color;
         this.modelo = modelo;
         this.marca = marca;
         this.reparado = false;
+        this.vehiculo = vehiculo;
     }
 
-    public Taller(String matricula, String color, String modelo, String marca, String cilindrada, String matriculación) {
+    //    para moto
+    public Taller(int numeroVehiculo, String matricula, String color, String modelo, String marca, String cilindrada, String matriculacion, Vehiculo vehiculo) {
+        this.numeroVehiculo = numeroVehiculo;
         this.matricula = matricula;
         this.color = color;
         this.modelo = modelo;
@@ -40,27 +54,22 @@ public class Taller {
         this.cilindrada = cilindrada;
         this.matriculacion = matriculacion;
         this.reparado = false;
+        this.vehiculo = vehiculo;
     }
 
     @Override
     public String toString() {
-        String rep= "";
-
-        if (reparado == false) {
-            rep= "no reparado";
-        }else {
-            rep= "reparado";
-        }
-
         return "Taller{" +
-                "matricula='" + matricula + '\'' +
+                "numeroVehiculo=" + numeroVehiculo +
+                ", matricula='" + matricula + '\'' +
                 ", color='" + color + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", marca='" + marca + '\'' +
                 ", cilindrada='" + cilindrada + '\'' +
                 ", puertas='" + puertas + '\'' +
-                ", matriculación='" + matriculacion + '\'' +
-                ", reparado=" + rep +
+                ", matriculacion='" + matriculacion + '\'' +
+                ", vehiculo=" + vehiculo +
+                ", reparado=" + reparado +
                 '}';
     }
 }
