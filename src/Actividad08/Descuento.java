@@ -2,7 +2,15 @@ package Actividad08;
 
 public interface Descuento {
 
-    final double DESCUENTO= 15;
+    final float DESCUENTO= 100 - 15;
 
-    public void CalcularDescuento();
+    public void precio();
+
+//    float calcularDescuento(float descuento);
+
+    public void entradasRestentes();
+
+    public String toString();
+
+    public String informeZona();
 }

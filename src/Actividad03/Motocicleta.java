@@ -1,5 +1,12 @@
 package Actividad03;
 
-public class Motocicleta extends Taller implements DosRuedas implements CuatroRuedas{
+public class Motocicleta extends Taller implements DosRuedas{
 
+    public Motocicleta(int numeroVehiculo, String matricula, String color, String modelo, String marca, String cilindrada, String puertas, String matriculacion, Vehiculo vehiculo) {
+        super(numeroVehiculo, matricula, color, modelo, marca, cilindrada, puertas, matriculacion, vehiculo);
+    }
+
+    public void dosRuedas(){
+
+    }
 }
